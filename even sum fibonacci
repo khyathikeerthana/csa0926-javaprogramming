@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class EvenSumFibonacci {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Input the value of N
+        System.out.print("Enter the value of N: ");
+        int n = scanner.nextInt();
+        
+        // Find the sum of even Fibonacci numbers up to N
+        long evenSum = findEvenSumFibonacci(n);
+        
+        // Display the result
+        System.out.println("Sum of even Fibonacci numbers up to " + n + " is: " + evenSum);
+        
+        scanner.close();
+    }
+    
+    public static long findEvenSumFibonacci(int n) {
+        long sum = 0;
+        long prev = 0;
+        long curr = 1;
+        
+        // Iterate through the Fibonacci sequence up to n
+        while (curr <= n) {
+            // If the current number is even, add it to the sum
+            if (curr % 2 == 0) {
+                sum += curr;
+            }
+            
+            // Calculate the next Fibonacci number
+            long next = prev + curr;
+            prev = curr;
+            curr = next;
+        }
+        
+        return sum;
+    }
+}
